@@ -788,8 +788,7 @@ details.more .fmts{margin-bottom:6px}
         <p>A dark Celtic portal fantasy that crosses from modern Dublin and Pittsburgh into Éironda, the otherworld, where Aidan Corbin and Michael Hornsby are bound to a blade that should have stayed buried.</p>
         <ul class="fmts"><li><span>Paperback</span><span>Available</span></li><li><span>Kindle eBook</span><span>Available</span></li></ul>
         </details>
-        <a class="btn dark" data-amazon="luminary" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
-        <button class="lk-btn mono" type="button" data-email-link="luminary" aria-haspopup="dialog" aria-controls="linkModal">Not ready yet? Email me the link</button>
+        <a class="btn dark" data-amazon="luminary" data-buy="luminary" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
         <div class="sample-dl"><a class="btn outline" href="The_Luminary_Sword_sample/The%20Luminary%20Sword%20preview.pdf" download="The Luminary Sword preview.pdf" data-goatcounter-click="download-luminary-sword-preview" data-goatcounter-title="Download: The Luminary Sword preview" type="application/pdf">Free preview (PDF) <span class="arr">↓</span></a></div>
       </div>
     </article>
@@ -809,8 +808,7 @@ details.more .fmts{margin-bottom:6px}
         <p>Book One of The Nemesis Project. An engineer, a father, a general and a fifteen-year-old face a sabotaged launch and a signal that has been waiting for decades.</p>
         <ul class="fmts"><li><span>Paperback</span><span>Available</span></li><li><span>Kindle eBook</span><span>Available</span></li><li><span>Series</span><span>The Nemesis Project - Book One</span></li></ul>
         </details>
-        <a class="btn dark" data-amazon="aether" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
-        <button class="lk-btn mono" type="button" data-email-link="aether" aria-haspopup="dialog" aria-controls="linkModal">Not ready yet? Email me the link</button>
+        <a class="btn dark" data-amazon="aether" data-buy="aether" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
         <div class="sample-dl"><a class="btn outline" href="Aethers_Reach_sample/Aether%27s%20Reach%20preview.pdf" download="Aether's Reach preview.pdf" data-goatcounter-click="download-aethers-reach-preview" data-goatcounter-title="Download: Aether's Reach preview" type="application/pdf">Free preview (PDF) <span class="arr">↓</span></a></div>
       </div>
     </article>
@@ -870,7 +868,7 @@ details.more .fmts{margin-bottom:6px}
     <div class="mono">Inside the book</div>
     <h2>Aether’s <em>Reach</em></h2>
     <p>Book One of The Nemesis Project: the premise, the people and the engineering behind it.</p>
-    <a class="btn ghost" data-amazon="aether" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
+    <a class="btn ghost" data-amazon="aether" data-buy="aether" href="#library" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-amazon"/></svg>Buy on Amazon <span class="arr">↗</span></a>
   </div>
 </section>
 
@@ -1057,15 +1055,15 @@ details.more .fmts{margin-bottom:6px}
   <div class="sm-backdrop" data-close></div>
   <div class="sm-card lk-card">
     <button class="sm-x" type="button" data-close aria-label="Close">×</button>
-    <div class="mono sm-kick">Not ready yet?</div>
-    <h2 class="sm-title" id="linkTitle">Send it to your inbox</h2>
+    <div class="mono sm-kick">Buy on Amazon</div>
+    <h2 class="sm-title" id="linkTitle">Get the link in your inbox</h2>
     <p class="lk-book" id="lkBook"></p>
     <!-- Sends through the Kit form for this book (KIT_FORMS in the script near the end of this file). -->
     <form class="lk-form" id="linkForm" method="post" target="lk-sink">
       <label class="mono sm-lab" for="lkEmail">Your email</label>
       <div class="sm-row">
         <input id="lkEmail" name="email_address" type="email" required maxlength="200" autocomplete="email" placeholder="your@email.com">
-        <button class="btn" type="submit" id="lkSend">Email me the link</button>
+        <button class="btn" type="submit" id="lkSend">Send me the link</button>
       </div>
     </form>
     <p class="lk-note" id="lkNote"></p>
@@ -1107,7 +1105,7 @@ details.more .fmts{margin-bottom:6px}
       <h3>If you sign up for news</h3>
       <p>Your email address is sent to me through a form service called Web3Forms and used only to send book news, such as the <em>In the Warm Hour</em> release. You can ask to be removed at any time.</p>
       <h3>If you ask for a book link</h3>
-      <p>The “Email me the link” option sends your email address to Kit, the email service that delivers the link. You’ll also receive occasional news about new books, and every email has a one-click unsubscribe. Until that service is switched on, the option simply opens your own email app and nothing is sent to me.</p>
+      <p>When you choose Buy on Amazon, you’re asked for your email address so the book’s Amazon link can be sent to you. Your address goes to Kit, the email service that delivers the link. You’ll also receive occasional news about new books, and every email has a one-click unsubscribe.</p>
       <h3>If you send a message</h3>
       <p>Your name, email address and message reach me the same way, and are used only to read and reply to you.</p>
       <h3>Visitor statistics</h3>
@@ -1180,7 +1178,7 @@ const AUTHOR_PAGE='https://www.amazon.com/stores/author/B0H2SBXBMV';
   const chip=cover.querySelector('.buy'); if(chip) chip.innerHTML='<span class="bl">'+amazonIcon+'View on Amazon</span> <i>↗</i>';
   const box=card.querySelector('#wh-notify'); if(box) box.hidden=true;
   const buy=document.createElement('a'); buy.className='btn dark'; buy.href=url; buy.target='_blank'; buy.rel='noopener';
-  buy.innerHTML=amazonIcon+'Buy on Amazon <span class="arr">↗</span>';
+  buy.dataset.buy='warmhour'; buy.innerHTML=amazonIcon+'Buy on Amazon <span class="arr">↗</span>';
   if(box) box.after(buy); else card.querySelector('.binfo').appendChild(buy);
 })();
 
@@ -1449,34 +1447,29 @@ function wireForm(form, list, out, okMsg){
 wireForm($('#signup'), 'Newsletter', $('#done'), 'You’re on the list. Thank you.');
 wireForm(whForm, 'In the Warm Hour release', $('#whDone'), 'You’re on the list. We’ll write on release day.');
 
-/* ============ "EMAIL ME THE LINK" (Kit) ============
-   Each published book has its own Kit form. Kit emails the reader a confirmation
-   whose button takes them straight to the book's Amazon page.
+/* ============ BUY ON AMAZON → EMAIL THE LINK (Kit) ============
+   Each published book has its own Kit form. Its Buy on Amazon buttons ask for the
+   reader's email, and Kit emails a confirmation whose button takes them straight
+   to the book's Amazon page.
      • Paste each form's number between the quotes (it's in the form's address in Kit,
        e.g. app.kit.com/forms/designers/1234567/edit → '1234567').
-     • While a number is empty, the pop-up opens the reader's own email app instead,
-       with the Amazon link written out, ready to send to themselves. Nothing is stored.
+     • While a number is empty, that book's Buy buttons go straight to Amazon.
    ============================================================ */
 const KIT_FORMS = {
-  luminary: '',   // Kit form: "Email me the link: The Luminary Sword"
+  luminary: '10216124',   // Kit form: "Email me the link: The Luminary Sword"
   aether:   '',   // Kit form: "Email me the link: Aether's Reach"
   warmhour: ''    // Kit form: "Email me the link: In the Warm Hour" (only used from launch day)
 };
 const BOOK_TITLES={luminary:'The Luminary Sword',aether:'Aether’s Reach',warmhour:'In the Warm Hour'};
 const lkModal=$('#linkModal'), lkForm=$('#linkForm'), lkDone=$('#lkDone'), lkNote=$('#lkNote'), lkSend=$('#lkSend');
 let lkKey='', lkLast=null;
-// from launch day, In the Warm Hour gets the same link under its Buy button
-if(document.documentElement.classList.contains('wh-launched')){
-  const whBuy=$('.book.wh .binfo a.btn.dark[target=_blank]');
-  if(whBuy) whBuy.insertAdjacentHTML('afterend','<button class="lk-btn mono" type="button" data-email-link="warmhour" aria-haspopup="dialog" aria-controls="linkModal">Not ready yet? Email me the link</button>');
-}
 function openLink(key){
   lkKey=key; lkLast=document.activeElement;
   $('#lkBook').textContent=BOOK_TITLES[key];
   const id=KIT_FORMS[key];
   if(id){
     lkForm.action='https://app.kit.com/forms/'+encodeURIComponent(id)+'/subscriptions';
-    lkSend.textContent='Email me the link';
+    lkSend.textContent='Send me the link';
     lkNote.textContent='You’ll get one email from Glenn Foster. Tap the button inside and it takes you straight to the book on Amazon. You’ll also hear about new books now and then, and can unsubscribe in one click.';
   }else{
     lkForm.removeAttribute('action');
@@ -1488,6 +1481,9 @@ function openLink(key){
 }
 function closeLink(){lkModal.hidden=true;document.body.classList.remove('sm-open');if(lkLast)lkLast.focus()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-email-link]');if(b){e.preventDefault();openLink(b.dataset.emailLink)}});
+// Buy on Amazon buttons: once a book's Kit form number is filled in above, the button asks for
+// the reader's email and Kit sends the Amazon link. While the number is empty it goes straight to Amazon.
+document.addEventListener('click',e=>{const b=e.target.closest('[data-buy]');if(b&&KIT_FORMS[b.dataset.buy]){e.preventDefault();openLink(b.dataset.buy)}});
 $$('[data-close]',lkModal).forEach(el=>el.addEventListener('click',closeLink));
 document.addEventListener('keydown',e=>{
   if(lkModal.hidden)return;
