@@ -490,15 +490,6 @@ footer nav a .ico{margin-right:.5em;width:1.15em;height:1.15em}
 .sm-row input{flex:1;min-width:0;background:transparent;border:0;color:var(--mist);font-family:var(--mono);font-size:13px;padding:0 12px;outline:none;text-overflow:ellipsis}
 .sm-row .btn{padding:13px 20px}
 body.sm-open{overflow:hidden}
-.ct-card{width:min(480px,100%)}
-.ct-form{display:grid;gap:4px;text-align:left}
-.ct-form .sm-lab{margin:12px 0 6px}
-.ct-form input,.ct-form textarea{width:100%;background:rgba(7,9,12,.6);border:1px solid rgba(233,236,238,.2);border-radius:12px;color:var(--mist);font:15px/1.5 var(--sans);padding:12px 14px;outline:none;transition:border-color .3s}
-.ct-form textarea{resize:vertical;min-height:130px}
-.ct-form input:focus,.ct-form textarea:focus{border-color:var(--ice)}
-.ct-form .btn{justify-self:start;margin-top:18px}
-.ct-note{margin:16px 0 0;color:var(--dim);font-size:13px;line-height:1.55}
-.ct-done{margin:16px 0 0;color:var(--mist);min-height:1.2em}
 .pv-card{width:min(560px,100%)}
 .pv-body{text-align:left}
 .pv-body h3{font-family:var(--serif);font-weight:400;font-size:1.35rem;line-height:1.2;color:var(--txt);margin:22px 0 6px}
@@ -832,11 +823,11 @@ details.more .fmts{margin-bottom:6px}
         <div class="notify-box" id="wh-notify">
           <p class="notify-how"><b>Be the first to know.</b> One email when it lands in paperback, and one more when the Kindle edition follows.</p>
           <button class="btn dark" type="button" id="whBtn" aria-expanded="true" aria-controls="whForm" hidden>Notify me <span class="arr">→</span></button>
-          <!-- Connected through the WEB3FORMS_KEY line in the script near the end of this file. -->
-          <form class="wh-form" id="whForm" action="#" method="post">
+          <!-- Sends to the Kit form in KIT_SIGNUPS (script near the end of this file). -->
+          <form class="wh-form" id="whForm" method="post" target="kit-sink">
             <label for="whEmail" class="sr">Email address</label>
-            <input id="whEmail" name="email" type="email" required placeholder="your@email.com" autocomplete="email">
-            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input id="whEmail" name="email_address" type="email" required maxlength="200" placeholder="your@email.com" autocomplete="email">
+            <input type="checkbox" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button class="btn" type="submit">Get notified <span class="arr">→</span></button>
           </form>
           <p class="wh-done mono" id="whDone" aria-live="polite"></p>
@@ -1004,11 +995,11 @@ details.more .fmts{margin-bottom:6px}
   <div class="mono rv">The mailing list</div>
   <h2 class="rv">Don’t lose <em>that signal.</em></h2>
   <p class="lede rv">Get release news for <em>In the Warm Hour</em>, notes from the workshop and first looks at new covers, only when there’s something worth receiving.</p>
-  <!-- Connected through the WEB3FORMS_KEY line in the script near the end of this file. -->
-  <form class="signup rv" id="signup" action="#" method="post">
+  <!-- Sends to the Kit form in KIT_SIGNUPS (script near the end of this file). -->
+  <form class="signup rv" id="signup" method="post" target="kit-sink">
     <label for="em" class="sr">Email address</label>
-    <input id="em" name="email" type="email" required placeholder="your@email.com" autocomplete="email">
-    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input id="em" name="email_address" type="email" required maxlength="200" placeholder="your@email.com" autocomplete="email">
+    <input type="checkbox" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="btn" type="submit">Subscribe here <span class="arr">→</span></button>
   </form>
   <p class="done mono" id="done" aria-live="polite"></p>
@@ -1072,27 +1063,7 @@ details.more .fmts{margin-bottom:6px}
 </div>
 <iframe name="lk-sink" id="lkSink" title="Email me the link" hidden></iframe>
 
-<div class="share-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" hidden>
-  <div class="sm-backdrop" data-close></div>
-  <div class="sm-card ct-card">
-    <button class="sm-x" type="button" data-close aria-label="Close">×</button>
-    <div class="mono sm-kick">Open channel</div>
-    <h2 class="sm-title" id="contactTitle">Write to Glenn</h2>
-    <!-- Sends through Web3Forms (the WEB3FORMS_KEY in the script near the end of this file); no address is shown on the page. -->
-    <form class="ct-form" id="contactForm" action="#" method="post">
-      <label class="mono sm-lab" for="ctName">Your name</label>
-      <input id="ctName" name="name" type="text" required maxlength="120" autocomplete="name">
-      <label class="mono sm-lab" for="ctEmail">Your email</label>
-      <input id="ctEmail" name="email" type="email" required maxlength="200" autocomplete="email">
-      <label class="mono sm-lab" for="ctMsg">Message</label>
-      <textarea id="ctMsg" name="message" required maxlength="5000"></textarea>
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Send message <span class="arr">→</span></button>
-    </form>
-    <p class="ct-note">Reader notes, questions about the books and stories from fellow veterans are always welcome. Unsolicited sales offers are ignored.</p>
-    <p class="mono ct-done" id="ctDone" aria-live="polite"></p>
-  </div>
-</div>
+<iframe name="kit-sink" id="kitSink" title="Mailing list sign-up" hidden></iframe>
 
 <div class="share-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle" hidden>
   <div class="sm-backdrop" data-close></div>
@@ -1103,18 +1074,16 @@ details.more .fmts{margin-bottom:6px}
     <div class="pv-body">
       <p>This is a small author’s website. It collects as little as possible, and nothing is ever sold, rented or traded.</p>
       <h3>If you sign up for news</h3>
-      <p>Your email address is sent to me through a form service called Web3Forms and used only to send book news, such as the <em>In the Warm Hour</em> release. You can ask to be removed at any time.</p>
+      <p>Your email address goes to Kit, the email service that sends my newsletter, and is used only to send book news, such as the <em>In the Warm Hour</em> release. Kit first emails you a button to confirm, and every email after that has a one-click unsubscribe.</p>
       <h3>If you ask for a book link</h3>
       <p>When you choose Buy on Amazon, you’re asked for your email address so the book’s Amazon link can be sent to you. Your address goes to Kit, the email service that delivers the link. You’ll also receive occasional news about new books, and every email has a one-click unsubscribe.</p>
-      <h3>If you send a message</h3>
-      <p>Your name, email address and message reach me the same way, and are used only to read and reply to you.</p>
       <h3>Visitor statistics</h3>
       <p>The site counts visits with GoatCounter, a privacy-focused service that uses no cookies and doesn’t identify you. It records things like which page was viewed, the site you came from, your browser and screen size, your approximate country, and clicks on the sample downloads.</p>
       <h3>Other services</h3>
       <p>The site is hosted on GitHub Pages and its fonts load from Google Fonts, so those services see your browser’s request in the normal way. Links to Amazon and YouTube take you to their sites, which have their own privacy policies.</p>
       <h3>Removal or questions</h3>
-      <p>To be removed from the list, have your information deleted, or ask anything about this, use the <button class="pv-link" type="button" data-open-contact>Contact</button> form.</p>
-      <p class="mono pv-date">Last updated October 17, 2026</p>
+      <p>To be removed from the list, use the unsubscribe link at the bottom of any email. To have your information deleted, or to ask anything about this, reply to any email from me.</p>
+      <p class="mono pv-date">Last updated November 19, 2026</p>
     </div>
   </div>
 </div>
@@ -1124,7 +1093,7 @@ details.more .fmts{margin-bottom:6px}
   <div class="tr-band tr-memorial" role="note" aria-label="Memorial Day tribute"><div class="tr-stars" aria-hidden="true"><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg></div><div class="tr-label mono">Memorial Day</div><p class="tr-head">We remember those who gave their lives in service to our nation.</p><p class="tr-sub">All gave some. Some gave all.</p></div>
   <div class="tr-band tr-veterans" role="note" aria-label="Veterans Day tribute"><div class="tr-stars" aria-hidden="true"><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg><svg viewBox="-10 -10 20 20"><polygon points="0,-9 2.1,-2.9 8.6,-2.8 3.4,1.1 5.3,7.3 0,3.6 -5.3,7.3 -3.4,1.1 -8.6,-2.8 -2.1,-2.9"/></svg></div><div class="tr-label mono">Veterans Day · November 11</div><p class="tr-head">To every veteran who has served: thank you.</p><p class="tr-sub">From one veteran to all my brothers and sisters in arms.</p></div>
   <a class="brand" href="#top">Glenn Foster</a>
-  <nav class="mono" aria-label="Footer"><a href="#library">Books</a><a href="#signal" data-join>Join the list</a><a href="https://www.youtube.com/@Glenn_Foster_Author" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-youtube"/></svg>YouTube</a><button class="ft-link" type="button" id="contactBtn" aria-haspopup="dialog" aria-controls="contactModal">Contact</button><button class="ft-link" type="button" data-open-privacy aria-haspopup="dialog" aria-controls="privacyModal">Privacy</button></nav>
+  <nav class="mono" aria-label="Footer"><a href="#library">Books</a><a href="#signal" data-join>Join the list</a><a href="https://www.youtube.com/@Glenn_Foster_Author" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-youtube"/></svg>YouTube</a><button class="ft-link" type="button" data-open-privacy aria-haspopup="dialog" aria-controls="privacyModal">Privacy</button></nav>
   <div class="r mono">© <span id="yr">2026</span> Glenn Foster</div>
   <p class="ft-note">Unsolicited sales offers for indexing and other services are ignored. Glenn Foster is an independent author who does all of his own work, drawing on his experience in IT.</p>
 </footer>
@@ -1418,34 +1387,30 @@ copyBtn.addEventListener('click',()=>{
   function legacy(){urlBox.focus();urlBox.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}done(ok)}
 });
 
-/* ============ NEWSLETTER SIGN-UPS (Web3Forms → your inbox) ============
-   Each sign-up is emailed to you. To switch this on:
-     1. Go to web3forms.com, type in the email address that should receive sign-ups,
-        and they'll email you an Access Key.
-     2. Paste that key between the quotes below and upload this file to GitHub.
-   Until a key is in place, the forms send nothing. */
-const WEB3FORMS_KEY = '46bc95ce-869f-48f6-a0ad-c95e0393f04b';
-const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
-function wireForm(form, list, out, okMsg){
-  form.addEventListener('submit', async e=>{
-    e.preventDefault();
-    if(!WEB3FORMS_KEY) return;                        // not connected yet: nothing is sent
-    const email=form.querySelector('input[type=email]').value.trim();
-    const btn=form.querySelector('button[type=submit]'); btn.disabled=true;
-    out.textContent='Sending…';
-    try{
-      const r=await fetch(WEB3FORMS_URL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({access_key:WEB3FORMS_KEY, subject:'New sign-up: '+list, from_name:'glennfosterauthor.com',
-          email, list, signed_up:new Date().toISOString(), botcheck:form.querySelector('.hp').checked})});
-      const j=await r.json();
-      if(j.success){ out.textContent=okMsg; form.reset(); if(form===whForm) whForm.hidden=true; }
-      else throw new Error(j.message||'failed');
-    }catch(err){ out.textContent='Something went wrong. Please try again in a moment.'; }
-    btn.disabled=false;
+/* ============ MAILING-LIST SIGN-UPS (Kit) ============
+   The newsletter box ("Don't lose that signal") and In the Warm Hour's "Get notified"
+   box each send to their own Kit form. Kit emails the reader a button to confirm,
+   then they appear under Subscribers in Kit.
+     • Paste each form's number between the quotes (it's in the form's address in Kit,
+       e.g. app.kit.com/forms/designers/1234567/edit → '1234567').
+     • While a number is empty, that box sends nothing. */
+const KIT_SIGNUPS = {
+  newsletter: '10216273',   // Kit form: "Newsletter"
+  warmhour:   '10216309'    // Kit form: "In the Warm Hour release"
+};
+function wireKit(form, key, out, okMsg){
+  form.addEventListener('submit', e=>{
+    const id=KIT_SIGNUPS[key], btn=form.querySelector('button[type=submit]');
+    if(form.querySelector('.hp').checked){ e.preventDefault(); out.textContent=okMsg; return; }   // bot trap
+    if(!id){ e.preventDefault(); out.textContent='Sign-ups open soon. Please check back.'; return; }
+    form.action='https://app.kit.com/forms/'+encodeURIComponent(id)+'/subscriptions';
+    btn.disabled=true; out.textContent='Sending…';
+    $('#kitSink').addEventListener('load',()=>{btn.disabled=false; form.reset(); out.textContent=okMsg;
+      if(form===whForm) whForm.hidden=true;},{once:true});
   });
 }
-wireForm($('#signup'), 'Newsletter', $('#done'), 'You’re on the list. Thank you.');
-wireForm(whForm, 'In the Warm Hour release', $('#whDone'), 'You’re on the list. We’ll write on release day.');
+wireKit($('#signup'), 'newsletter', $('#done'), 'Almost there. Check your inbox and tap the button to confirm.');
+wireKit(whForm, 'warmhour', $('#whDone'), 'Almost there. Check your inbox and tap the button to confirm. I’ll write on release day.');
 
 /* ============ BUY ON AMAZON → EMAIL THE LINK (Kit) ============
    Each published book has its own Kit form. Its Buy on Amazon buttons ask for the
@@ -1457,7 +1422,7 @@ wireForm(whForm, 'In the Warm Hour release', $('#whDone'), 'You’re on the list
    ============================================================ */
 const KIT_FORMS = {
   luminary: '10216124',   // Kit form: "Email me the link: The Luminary Sword"
-  aether:   '',   // Kit form: "Email me the link: Aether's Reach"
+  aether:   '10216220',   // Kit form: "Email me the link: Aether's Reach"
   warmhour: ''    // Kit form: "Email me the link: In the Warm Hour" (only used from launch day)
 };
 const BOOK_TITLES={luminary:'The Luminary Sword',aether:'Aether’s Reach',warmhour:'In the Warm Hour'};
@@ -1505,42 +1470,12 @@ lkForm.addEventListener('submit',e=>{
     lkDone.textContent='Check your inbox. Open the email from Glenn Foster and tap the button to go straight to the book.'},{once:true});
 });
 
-/* ============ CONTACT POP-UP (Web3Forms → your inbox) ============ */
-const ctModal=$('#contactModal'), ctForm=$('#contactForm'), ctDone=$('#ctDone');
-let ctLast=null;
-function openContact(){ctLast=document.activeElement;ctModal.hidden=false;document.body.classList.add('sm-open');ctDone.textContent='';ctForm.hidden=false;$('#ctName').focus()}
-function closeContact(){ctModal.hidden=true;document.body.classList.remove('sm-open');if(ctLast)ctLast.focus()}
-$('#contactBtn').addEventListener('click',openContact);
-$$('[data-close]',ctModal).forEach(el=>el.addEventListener('click',closeContact));
-document.addEventListener('keydown',e=>{
-  if(ctModal.hidden)return;
-  if(e.key==='Escape')closeContact();
-  if(e.key==='Tab'){const f=$$('button:not([hidden]),input:not(.hp),textarea',ctModal.querySelector('.sm-card')).filter(x=>!x.closest('[hidden]'));const i=f.indexOf(document.activeElement);
-    if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()} else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}
-});
-ctForm.addEventListener('submit',async e=>{
-  e.preventDefault();
-  if(!WEB3FORMS_KEY)return;
-  const btn=ctForm.querySelector('button[type=submit]');btn.disabled=true;ctDone.textContent='Sending…';
-  const name=$('#ctName').value.trim(), email=$('#ctEmail').value.trim(), message=$('#ctMsg').value.trim();
-  try{
-    const r=await fetch(WEB3FORMS_URL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'New message from glennfosterauthor.com',from_name:name||'Site visitor',
-        name,email,message,botcheck:ctForm.querySelector('.hp').checked})});
-    const j=await r.json();
-    if(j.success){ctForm.reset();ctForm.hidden=true;ctDone.textContent='Thank you. Your message is on its way.'}
-    else throw new Error(j.message||'failed');
-  }catch(err){ctDone.textContent='Something went wrong. Please try again in a moment.'}
-  btn.disabled=false;
-});
-
 /* ============ PRIVACY POP-UP ============ */
 const pvModal=$('#privacyModal'); let pvLast=null;
 function openPrivacy(){pvLast=document.activeElement;pvModal.hidden=false;document.body.classList.add('sm-open');pvModal.querySelector('.sm-x').focus()}
 function closePrivacy(back=true){pvModal.hidden=true;document.body.classList.remove('sm-open');if(back&&pvLast)pvLast.focus()}
 $$('[data-open-privacy]').forEach(b=>b.addEventListener('click',openPrivacy));
 $$('[data-close]',pvModal).forEach(el=>el.addEventListener('click',()=>closePrivacy()));
-$$('[data-open-contact]',pvModal).forEach(b=>b.addEventListener('click',()=>{closePrivacy(false);openContact()}));
 document.addEventListener('keydown',e=>{
   if(pvModal.hidden)return;
   if(e.key==='Escape')closePrivacy();
